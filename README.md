@@ -51,12 +51,12 @@ Start the VM.
 
 ## 3. Install nginx
 After installing Ubuntu Server, install the required components on the server
-
 Use the following commands:
 
 **sudo apt update**
 
 **sudo apt install nginx**
+
 
 Then reload nginx and see if it's running:
 
@@ -64,11 +64,13 @@ Then reload nginx and see if it's running:
 
 **sudo systemctl status nginx**
 
+
 If it's not, use the following commands and if they fail reinstall nginx
 
 **sudo systemctl enable nginx**
 
 **sudo systemctl start nginx**
+
 
 Then configure the firewall:
 
