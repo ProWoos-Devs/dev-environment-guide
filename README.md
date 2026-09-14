@@ -163,3 +163,14 @@ Replace *everything* in /etc/nginx/sites-available/default with this:
             fastcgi_pass unix:/run/php/php8.3-fpm.sock;
         }
     }
+
+Then:
+
+- **sudo nginx -t**
+- **sudo systemctl reload nginx**
+
+## 11. Wordpress on your browser
+Open http://localhost:8080 again and follow the WordPress installer. Database name wordpress, username wpuser, your password, host localhost.
+
+## 12. WooCommerce
+ In the WordPress admin, Plugins > Add New Plugin, search WooCommerce, Install Now, Activate. For the sample data, go to Products > All Products > Import and upload sample_products.csv. That file is inside the WooCommerce zip you have to download, in the folder woocommerce/sample-data/.
