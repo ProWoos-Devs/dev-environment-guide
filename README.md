@@ -101,3 +101,29 @@ and if not running:
 Verify the installation by connecting as root
 
 - **mariadb -u root -p**
+
+## 5. Install PHP-FPM
+
+Use the following commands:
+
+- **sudo apt update**
+- **sudo apt install php -y**
+
+Verify the installed version:
+
+- **php --version**
+
+## 6. Porting forward
+For your device's browser to reach the VM. Go in VirtualBox Settings, Network, Adapter 1(NAT) and Port Forwarding, then simply add a new rule from host port 8080 to guest port 80. Open http://localhost:8080 on your browser.
+
+## 7. PHP extensions
+Wordpress needs these PHP extensions, on the VM, use the following commands:
+
+- **sudo apt install php-mysql php-curl php-xml php-mbstring php-intl php-zip php-imagick**
+- **sudo systemctl restart php8.5-fpm**
+
+## 8. The database
+Use the following commands:
+
+- **sudo mariadb**
+- **CREATE DATABASE wordpress**
