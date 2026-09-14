@@ -117,7 +117,7 @@ Verify the installed version:
 For your device's browser to reach the VM. Go in VirtualBox Settings, Network, Adapter 1(NAT) and Port Forwarding, then simply add a new rule from host port 8080 to guest port 80. Open http://localhost:8080 on your browser.
 
 ## 7. PHP extensions
-Wordpress needs these PHP extensions, on the VM, use the following commands:
+WordPress needs these PHP extensions, on the VM, use the following commands:
 
 - **sudo apt install php-mysql php-curl php-xml php-mbstring php-intl php-zip php-imagick**
 - **sudo systemctl restart php8.5-fpm**
@@ -134,3 +134,12 @@ Use the following commands:
 - **GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpsuer'@'localhost';**
 - **FLUSH PRIVILEGES;**
 - **EXIT;**
+
+## 9. WordPress files
+Download WordPress files on your VM:
+
+- **cd /tmp**
+- **wget https://wordpress.org/latest.tar.gz**
+- **tar -xzf latest.tar.gz**
+- **sudo mv wordpress /var/www/wordpress**
+- **sudo chown -R www-data:www-data /var/www/wordpress**
