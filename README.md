@@ -143,3 +143,22 @@ Download WordPress files on your VM:
 - **tar -xzf latest.tar.gz**
 - **sudo mv wordpress /var/www/wordpress**
 - **sudo chown -R www-data:www-data /var/www/wordpress**
+
+## 10. Nginx configuration
+Replace *everything* in /etc/nginx/sites-available/default with this:
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/wordpress;
+    index index.php index.html;
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    }
+}
