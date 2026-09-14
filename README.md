@@ -58,6 +58,7 @@ Use the following commands:
 **sudo apt install nginx**
 
 
+
 Then reload nginx and see if it's running:
 
 **sudo systemctl reload nginx**
@@ -65,11 +66,13 @@ Then reload nginx and see if it's running:
 **sudo systemctl status nginx**
 
 
+
 If it's not, use the following commands and if they fail reinstall nginx
 
 **sudo systemctl enable nginx**
 
 **sudo systemctl start nginx**
+
 
 
 Then configure the firewall:
