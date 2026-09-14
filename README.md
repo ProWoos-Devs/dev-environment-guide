@@ -131,6 +131,6 @@ Use the following commands:
 
 *(for the "choose-your-password" space, write your own password)*
 
-- **GRANT ALL PRIVILEGES ON wordpress.* TO 'wpsuer'@'localhost';**
+- **GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpsuer'@'localhost';**
 - **FLUSH PRIVILEGES;**
 - **EXIT;**
