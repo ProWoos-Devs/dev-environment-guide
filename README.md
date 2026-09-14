@@ -51,6 +51,7 @@ Start the VM.
 
 ## 3. Install nginx
 After installing Ubuntu Server, install the required components on the server
+
 Use the following commands:
 
 - **sudo apt update**
@@ -81,3 +82,22 @@ Then configure the firewall:
 
 - **sudo ufw allow 'Nginx HTTP'**
 
+## 4. Install MariaDB
+
+Use the following commands:
+
+- **sudo apt update**
+- **sudo apt install mariadb-server mariadb-client galera-4**
+- **sudo mariadb-secure-installation**
+
+Then confirm the installation:
+
+- **sudo systemctl status mariadb**
+
+and if not running:
+
+- **sudo systemctl start mariadb**
+
+Verify the installation by connecting as root
+
+- **mariadb -u root -p**
