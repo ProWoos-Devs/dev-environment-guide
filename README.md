@@ -9,5 +9,6 @@ Step-by-step guide to a local WordPress + WooCommerce development VM (Ubuntu Ser
 - PHP-FPM
 - WordPress
 - WooCommerce
+
 The environment is intended for local development and testing, not production use.
 
