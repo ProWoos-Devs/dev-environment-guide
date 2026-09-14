@@ -153,11 +153,11 @@ server {
     index index.php index.html;
     server_name _;
 
-    location / {
+ location / {
         try_files $uri $uri/ /index.php?$args;
     }
 
-    location ~ \.php$ {
+ location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/run/php/php8.3-fpm.sock;
     }
