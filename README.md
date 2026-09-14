@@ -126,4 +126,9 @@ Wordpress needs these PHP extensions, on the VM, use the following commands:
 Use the following commands:
 
 - **sudo mariadb**
-- **CREATE DATABASE wordpress**
+- **CREATE DATABASE wordpress;**
+- **CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'choose-your-password';**
+*(for the "choose-your-password" space, write your own password)*
+- **GRANT ALL PRIVILEGES ON wordpress.*/ TO 'wpsuer'@'localhost';**
+- **FLUSH PRIVILEGES;**
+- **EXIT;**
