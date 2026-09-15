@@ -107,7 +107,7 @@ Verify the installation by connecting as root
 Use the following commands:
 
 - **sudo apt update**
-- **sudo apt install php -y**
+- **sudo apt install php-fpm -y**
 
 Verify the installed version:
 
