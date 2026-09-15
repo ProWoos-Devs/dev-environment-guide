@@ -312,11 +312,7 @@ Make sure the WordPress installer uses the same database name, username, passwor
 
 ### nginx is not running
 
-If 
-```
-sudo systemctl status nginx
-```
-shows that nginx is not running, try:
+If "sudo systemctl status nginx" shows that nginx is not running, try:
 
 ```
 sudo systemctl start nginx
