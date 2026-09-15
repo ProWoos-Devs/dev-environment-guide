@@ -46,6 +46,13 @@ Disk type: VDI
 
 Attach the Ubuntu Server ISO to the VM's optical drive.
 
+Follow the Ubuntu Installer:
+
+Language: English
+
+Username: (choose username)
+
+OpenSSH ticked off
 
 Start the VM.
 
@@ -113,7 +120,7 @@ Verify the installed version:
 
 - **php --version**
 
-## 6. Porting forward
+## 6. Port forwarding
 For your device's browser to reach the VM. Go in VirtualBox Settings, Network, Adapter 1(NAT) and Port Forwarding, then simply add a new rule from host port 8080 to guest port 80. Open http://localhost:8080 on your browser.
 
 ## 7. PHP extensions
