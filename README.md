@@ -52,7 +52,7 @@ Language: English
 
 Username: (choose username)
 
-OpenSSH ticked off
+OpenSSH server not installed
 
 Start the VM.
 
@@ -61,67 +61,101 @@ After installing Ubuntu Server, install the required components on the server
 
 Use the following commands:
 
-```sudo apt update```
+```
+sudo apt update
+```
 
-```sudo apt install nginx```
+```
+sudo apt install nginx
+```
 
 
 
 Then reload nginx and see if it's running:
 
-```sudo systemctl reload nginx```
+```
+sudo systemctl reload nginx
+```
 
-```sudo systemctl status nginx```
+```
+sudo systemctl status nginx
+```
 
 
 
 If it's not, use the following commands and if they fail reinstall nginx
 
-```sudo systemctl enable nginx```
+```
+sudo systemctl enable nginx
+```
 
-```sudo systemctl start nginx```
+```
+sudo systemctl start nginx
+```
 
 
 
 Then configure the firewall:
 
-```sudo ufw enable```
+```
+sudo ufw enable
+```
 
-```sudo ufw allow 'Nginx HTTP'```
+```
+sudo ufw allow 'Nginx HTTP'
+```
 
 ## 4. Install MariaDB
 
 Use the following commands:
 
-```sudo apt update```
+```
+sudo apt update
+```
 
-```sudo apt install mariadb-server mariadb-client galera-4```
+```
+sudo apt install mariadb-server mariadb-client galera-4
+```
 
-```sudo mariadb-secure-installation```
+```
+sudo mariadb-secure-installation
+```
 
 Then confirm the installation:
 
-```sudo systemctl status mariadb```
+```
+sudo systemctl status mariadb
+```
 
 and if not running:
 
-```sudo systemctl start mariadb```
+```
+sudo systemctl start mariadb
+```
 
 Verify the installation by connecting as root
 
-```mariadb -u root -p```
+```
+mariadb -u root -p
+```
 
 ## 5. Install PHP-FPM
 
 Use the following commands:
 
-```sudo apt update```
+```
+sudo apt update
+```
 
-```sudo apt install php-fpm -y```
+```
+sudo apt install php-fpm -y
+```
 
 Verify the installed version:
 
-```php --version```
+```
+php --version
+```
 
 ## 6. Port forwarding
 For your device's browser to reach the VM. Go in VirtualBox Settings, Network, Adapter 1(NAT) and Port Forwarding, then simply add a new rule from host port 8080 to guest port 80. Open http://localhost:8080 on your browser.
@@ -129,41 +163,67 @@ For your device's browser to reach the VM. Go in VirtualBox Settings, Network, A
 ## 7. PHP extensions
 WordPress needs these PHP extensions, on the VM, use the following commands:
 
-```sudo apt install php-mysql php-curl php-xml php-mbstring php-intl php-zip php-imagick```
+```
+sudo apt install php-mysql php-curl php-xml php-mbstring php-intl php-zip php-imagick
+```
 
-```sudo systemctl restart php8.5-fpm```
+```
+sudo systemctl restart php8.5-fpm
+```
 
 ## 8. The database
 Use the following commands:
 
-```sudo mariadb```
+```
+sudo mariadb
+```
 
-```CREATE DATABASE wordpress;```
+```
+CREATE DATABASE wordpress;
+```
 
-```CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'choose-your-password';```
+```
+CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'choose-your-password';
+```
 
 
 *(for the "choose-your-password" space, write your own password)*
 
 
-```GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';```
+```
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+```
 
-```FLUSH PRIVILEGES;```
+```
+FLUSH PRIVILEGES;
+```
 
-```EXIT;```
+```
+EXIT;
+```
 
 ## 9. WordPress files
 Download WordPress files on your VM:
 
-```cd /tmp```
+```
+cd /tmp
+```
 
-```wget https://wordpress.org/latest.tar.gz```
+```
+wget https://wordpress.org/latest.tar.gz
+```
 
-```tar -xzf latest.tar.gz```
+```
+tar -xzf latest.tar.gz
+```
 
-```sudo mv wordpress /var/www/wordpress```
+```
+sudo mv wordpress /var/www/wordpress
+```
 
-```sudo chown -R www-data:www-data /var/www/wordpress```
+```
+sudo chown -R www-data:www-data /var/www/wordpress
+```
 
 
 ## 10. Nginx configuration
@@ -188,9 +248,13 @@ Replace *everything* in /etc/nginx/sites-available/default with this:
 
 Then:
 
-```sudo nginx -t```
+```
+sudo nginx -t
+```
 
-```sudo systemctl reload nginx```
+```
+sudo systemctl reload nginx
+```
 
 ## 11. Wordpress on your browser
 Open http://localhost:8080 again and follow the WordPress installer. Database name wordpress, username wpuser, your password, host localhost.
@@ -208,7 +272,9 @@ The rule should forward host port 8080 to guest port 80.
 
 Also make sure nginx is running inside the VM:
 
-```sudo systemctl status nginx```
+```
+sudo systemctl status nginx
+```
 
 
 ### The PHP version or PHP-FPM socket does not match
@@ -217,32 +283,48 @@ Ubuntu's repositories may provide a different PHP version than the one used in t
 
 Check the installed version:
 
-```php --version```
+```
+php --version
+```
 
 If, for example, PHP 8.4 is installed instead of PHP 8.5, the nginx configuration will need to use the corresponding socket, such as:
 
-```/run/php/php8.4-fpm.sock```
+```
+/run/php/php8.4-fpm.sock
+```
 
 
 ### WordPress cannot connect to the database
 
 Make sure MariaDB is running:
 
-```sudo systemctl status mariadb```
+```
+sudo systemctl status mariadb
+```
 
 Check that the database and user exist:
 
-```sudo mariadb```
+```
+sudo mariadb
+```
 
 Make sure the WordPress installer uses the same database name, username, password, and host that were created earlier.
 
 ### nginx is not running
 
-If ```sudo systemctl status nginx``` shows that nginx is not running, try:
+If 
+```
+sudo systemctl status nginx
+```
+shows that nginx is not running, try:
 
-```sudo systemctl start nginx```
+```
+sudo systemctl start nginx
+```
 
-```sudo systemctl enable nginx```
+```
+sudo systemctl enable nginx
+```
 
 ### WooCommerce sample products cannot be imported
 
