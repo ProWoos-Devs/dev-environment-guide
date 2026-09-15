@@ -131,7 +131,7 @@ Use the following commands:
 
 *(for the "choose-your-password" space, write your own password)*
 
-- **GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpsuer'@'localhost';**
+- **GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpuser'@'localhost';**
 - **FLUSH PRIVILEGES;**
 - **EXIT;**
 
@@ -160,7 +160,7 @@ Replace *everything* in /etc/nginx/sites-available/default with this:
     
         location ~ \.php$ {
             include snippets/fastcgi-php.conf;
-            fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php8.5-fpm.sock;
         }
     }
 
