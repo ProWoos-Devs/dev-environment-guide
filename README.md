@@ -197,3 +197,73 @@ Open http://localhost:8080 again and follow the WordPress installer. Database na
 
 ## 12. WooCommerce
  In the WordPress admin, Plugins > Add New Plugin, search WooCommerce, Install Now, Activate. For the sample data, go to Products > All Products > Import and upload sample_products.csv. That file is inside the WooCommerce zip you have to download, in the folder woocommerce/sample-data/.
+
+ ## 13. Problems I ran into
+
+ ### The browser cannot connect to localhost:8080
+
+Make sure the VM is running and that VirtualBox port forwarding is configured correctly.
+
+The rule should forward host port 8080 to guest port 80.
+
+Also make sure nginx is running inside the VM:
+
+```sudo systemctl status nginx```
+
+
+### The PHP version or PHP-FPM socket does not match
+
+Ubuntu's repositories may provide a different PHP version than the one used in this guide.
+
+Check the installed version:
+
+```php --version```
+
+If, for example, PHP 8.4 is installed instead of PHP 8.5, the nginx configuration will need to use the corresponding socket, such as:
+
+```/run/php/php8.4-fpm.sock```
+
+
+### WordPress cannot connect to the database
+
+Make sure MariaDB is running:
+
+```sudo systemctl status mariadb```
+
+Check that the database and user exist:
+
+```sudo mariadb```
+
+Make sure the WordPress installer uses the same database name, username, password, and host that were created earlier.
+
+### nginx is not running
+
+If ```sudo systemctl status nginx``` shows that nginx is not running, try:
+
+```sudo systemctl start nginx```
+
+```sudo systemctl enable nginx```
+
+### WooCommerce sample products cannot be imported
+
+Make sure you are using the sample_products.csv file from the WooCommerce package and that the CSV has not been modified.
+
+In WordPress, go to Products > All Products > Import and select the CSV file.
+
+If the import fails, check that the WooCommerce plugin is installed and activated before attempting the import.
+
+### Where do I find the sample data file?
+
+The official WooCommerce documentation says that **sample_products.csv** is included in the WooCommerce plugin ZIP
+
+You can download the WooCommerce plugin ZIP directly from the official WooCommerce website:
+
+https://woocommerce.com/download/
+
+On that page, click Download WooCommerce.
+
+Then locate the **sample_products.csv** file:
+
+**Unzip the folder**, Go to: **woocommerce** > **sample-data**, and there is the **sample_products.csv** file
+
+After that, import it like instructed before.
