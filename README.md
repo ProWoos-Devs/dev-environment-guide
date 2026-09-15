@@ -62,6 +62,7 @@ After installing Ubuntu Server, install the required components on the server
 Use the following commands:
 
 ```sudo apt update```
+
 ```sudo apt install nginx```
 
 
@@ -93,7 +94,9 @@ Then configure the firewall:
 Use the following commands:
 
 ```sudo apt update```
+
 ```sudo apt install mariadb-server mariadb-client galera-4```
+
 ```sudo mariadb-secure-installation```
 
 Then confirm the installation:
@@ -113,6 +116,7 @@ Verify the installation by connecting as root
 Use the following commands:
 
 ```sudo apt update```
+
 ```sudo apt install php-fpm -y```
 
 Verify the installed version:
@@ -126,29 +130,41 @@ For your device's browser to reach the VM. Go in VirtualBox Settings, Network, A
 WordPress needs these PHP extensions, on the VM, use the following commands:
 
 ```sudo apt install php-mysql php-curl php-xml php-mbstring php-intl php-zip php-imagick```
+
 ```sudo systemctl restart php8.5-fpm```
 
 ## 8. The database
 Use the following commands:
 
 ```sudo mariadb```
+
 ```CREATE DATABASE wordpress;```
+
 ```CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'choose-your-password';```
+
 
 *(for the "choose-your-password" space, write your own password)*
 
+
 ```GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpuser'@'localhost';```
+
 ```FLUSH PRIVILEGES;```
+
 ```EXIT;```
 
 ## 9. WordPress files
 Download WordPress files on your VM:
 
 ```cd /tmp```
+
 ```wget https://wordpress.org/latest.tar.gz```
+
 ```tar -xzf latest.tar.gz```
+
 ```sudo mv wordpress /var/www/wordpress```
+
 ```sudo chown -R www-data:www-data /var/www/wordpress```
+
 
 ## 10. Nginx configuration
 Replace *everything* in /etc/nginx/sites-available/default with this:
@@ -173,6 +189,7 @@ Replace *everything* in /etc/nginx/sites-available/default with this:
 Then:
 
 ```sudo nginx -t```
+
 ```sudo systemctl reload nginx```
 
 ## 11. Wordpress on your browser
