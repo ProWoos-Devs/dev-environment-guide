@@ -146,7 +146,7 @@ Use the following commands:
 *(for the "choose-your-password" space, write your own password)*
 
 
-```GRANT ALL PRIVILEGES ON wordpress.\* TO 'wpuser'@'localhost';```
+```GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';```
 
 ```FLUSH PRIVILEGES;```
 
