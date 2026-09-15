@@ -46,6 +46,8 @@ Disk type: VDI
 
 Attach the Ubuntu Server ISO to the VM's optical drive.
 
+Start the VM.
+
 Follow the Ubuntu Installer:
 
 Language: English
@@ -53,8 +55,6 @@ Language: English
 Username: (choose username)
 
 OpenSSH server not installed
-
-Start the VM.
 
 ## 3. Install nginx
 After installing Ubuntu Server, install the required components on the server
